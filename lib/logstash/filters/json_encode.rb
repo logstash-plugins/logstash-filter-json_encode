@@ -2,6 +2,8 @@
 require "logstash/filters/base"
 require "logstash/namespace"
 require "logstash/environment"
+require "logstash/json"
+require "json"
 
 
 # JSON encode filter. Takes a field and serializes it into JSON
