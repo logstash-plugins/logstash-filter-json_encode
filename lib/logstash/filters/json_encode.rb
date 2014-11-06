@@ -11,9 +11,9 @@ require "json"
 # If no target is specified, the source field is overwritten with the JSON
 # text.
 #
-# For example, if you have a field named 'foo', and you want to store the
-# JSON encoded string in 'bar', do this:
-#
+# For example, if you have a field named `foo`, and you want to store the
+# JSON encoded string in `bar`, do this:
+# [source,ruby]
 #     filter {
 #       json_encode {
 #         source => "foo"
