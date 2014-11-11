@@ -3,8 +3,6 @@ require "logstash/filters/base"
 require "logstash/namespace"
 require "logstash/environment"
 require "logstash/json"
-require "json"
-
 
 # JSON encode filter. Takes a field and serializes it into JSON
 #
@@ -44,7 +42,7 @@ class LogStash::Filters::JSONEncode < LogStash::Filters::Base
     @logger.debug("Running JSON encoder", :event => event)
 
     begin
-      event[@target] = JSON.pretty_generate(event[@source])
+      event[@target] = LogStash::Json.dump(event[@source])
       filter_matched(event)
     rescue => e
       event.tag "_jsongeneratefailure"

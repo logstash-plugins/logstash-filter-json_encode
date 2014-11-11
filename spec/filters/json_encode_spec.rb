@@ -2,7 +2,7 @@ require "spec_helper"
 require "logstash/filters/json_encode"
 
 describe LogStash::Filters::JSONEncode do
-  
+
 
   describe "encode a field as json" do
     config <<-CONFIG
@@ -14,9 +14,9 @@ describe LogStash::Filters::JSONEncode do
       }
     CONFIG
 
-    hash = { "hello" => { "whoa" => [ 1,2,3 ] } }
+    hash = { "hello" => { "whoa" => [ 1, 2, 3 ] } }
     sample(hash) do
-      insist { JSON.parse(subject["fancy"]).to_json } == hash["hello"].to_json
+      insist { subject["fancy"] } == LogStash::Json.dump(hash["hello"])
     end
   end
 
@@ -29,9 +29,9 @@ describe LogStash::Filters::JSONEncode do
       }
     CONFIG
 
-    hash = { "hello" => { "whoa" => [ 1,2,3 ] } }
+    hash = { "hello" => { "whoa" => [ 1, 2, 3 ] } }
     sample(hash) do
-      insist { JSON.parse(subject["hello"]).to_json } == hash["hello"].to_json
+      insist { subject["hello"] } == LogStash::Json.dump(hash["hello"])
     end
   end
 end
