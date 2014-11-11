@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gemspec
+# uncomment to install all dependencies to run local specs, see https://github.com/elasticsearch/logstash/issues/2039
+# gemspec
 
 gem 'rake'
 gem 'gem_publisher'
