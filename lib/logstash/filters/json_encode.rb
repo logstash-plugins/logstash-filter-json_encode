@@ -21,7 +21,6 @@ require "logstash/json"
 class LogStash::Filters::JSONEncode < LogStash::Filters::Base
 
   config_name "json_encode"
-  milestone 2
 
   # The field to convert to JSON.
   config :source, :validate => :string, :required => true
