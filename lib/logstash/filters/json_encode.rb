@@ -36,7 +36,7 @@ class LogStash::Filters::JSONEncode < LogStash::Filters::Base
 
   public
   def filter(event)
-    return unless filter?(event)
+    
 
     @logger.debug("Running JSON encoder", :event => event)
 
