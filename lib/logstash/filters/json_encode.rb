@@ -36,16 +36,15 @@ class LogStash::Filters::JSONEncode < LogStash::Filters::Base
 
   public
   def filter(event)
-    
 
-    @logger.debug("Running JSON encoder", :event => event)
-
+    @logger.debug? && @logger.debug("Running JSON encoder", :event => event)
+    raw = event.get(@source)
     begin
-      event[@target] = LogStash::Json.dump(event[@source])
+      event.set(@target, LogStash::Json.dump(raw))
       filter_matched(event)
     rescue => e
       event.tag "_jsongeneratefailure"
-      @logger.warn("Trouble encoding JSON", :source => @source, :raw => event[@source].inspect, :exception => e)
+      @logger.warn("Trouble encoding JSON", :source => @source, :raw => raw.inspect, :exception => e)
     end
 
     @logger.debug? && @logger.debug("Event after JSON encoder", :event => event)

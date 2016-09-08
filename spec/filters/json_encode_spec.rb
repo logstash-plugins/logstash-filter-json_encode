@@ -16,7 +16,7 @@ describe LogStash::Filters::JSONEncode do
 
     hash = { "hello" => { "whoa" => [ 1, 2, 3 ] } }
     sample(hash) do
-      insist { subject["fancy"] } == LogStash::Json.dump(hash["hello"])
+      insist { subject.get("fancy") } == LogStash::Json.dump(hash["hello"])
     end
   end
 
@@ -31,7 +31,7 @@ describe LogStash::Filters::JSONEncode do
 
     hash = { "hello" => { "whoa" => [ 1, 2, 3 ] } }
     sample(hash) do
-      insist { subject["hello"] } == LogStash::Json.dump(hash["hello"])
+      insist { subject.get("hello") } == LogStash::Json.dump(hash["hello"])
     end
   end
 end
