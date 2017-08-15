@@ -1,3 +1,6 @@
+## 3.0.2
+  - Fix some documentation issues
+
 ## 3.0.0
  - breaking: Updated plugin to use new Java Event APIs
 
